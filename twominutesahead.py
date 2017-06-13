@@ -18,20 +18,31 @@ class Enemy(object):
 
 
 	 def attack(self):
-	 	if self.number_of_enemies > 1:
-	 		print("There is %d "+self.enemy_type+" behind you!\n It is "+self.sound+"ing LOUDLY ", self.number_of_enemies)
+	 	if self.number_of_enemies == 1:
+	 		print "There is %d %s behind you!\n %sing LOUDLY!!!" %(self.number_of_enemies, self.enemy_type, self.sound)
+
+	 	elif self.number_of_enemies > 1:
+	 		print "There are %d %ss coming towards you!\n %sing LOUDLY!!!" %(self.number_of_enemies, self.enemy_type, self.sound)
 
 	 	else:
-	 		print("There are %d "+self.enemy_type+"s walking towards you!\n They are all "+self.sound+"ing LOUDLY ", self.number_of_enemies)
-
+	 		print "You are a lucky today they are not coming for you!"
 
 
 
 class Troll(Enemy):
 	def __init__(self, enemy_type, sound, number_of_enemies):
+		self.sound = sound
+	 	self.enemy_type = enemy_type
+	 	self.number_of_enemies = number_of_enemies
+
 		super(Enemy, self).__init__()
 
 
 class FlyingBat(Enemy):
 	def __init__(self, enemy_type, sound, number_of_enemies):
 		super(Enemy, self).__init__()
+
+
+troll = Troll('Fat-Belly-Troll', 'ROAAAAR', 1)
+
+troll.attack()
