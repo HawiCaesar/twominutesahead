@@ -25,7 +25,7 @@ class TwoMinutesAheadTestCase(unittest.TestCase):
 
 	def test_enemy_can_attack(self):
 		manbat = FlyingBat('Swedish Bat', 'Screech-Screech-SCREECH', 32, 6)
-		self.assertEqual(manbat.attack(), "YOU BETTER THINK QUICKY AND GET OUT OF THERE!!!", "attack method should communicate to user")
+		self.assertEqual(manbat.attack(), "YOU BETTER THINK QUICKLY AND GET OUT OF THERE!!!", "attack method should communicate to user")
 
 
 
