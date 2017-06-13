@@ -16,19 +16,22 @@ class Enemy(object):
 	 		raise TypeError("Number of Enemies should be an integer whole number")
 
 
+
 	 def attack(self):
 	 	if self.number_of_enemies > 1:
-	 		print("There is %d "+enemy_type+" behind you!\n It is "+sound+"ing LOUDLY ", self.number_of_enemies)
+	 		print("There is %d "+self.enemy_type+" behind you!\n It is "+self.sound+"ing LOUDLY ", self.number_of_enemies)
 
 	 	else:
-	 		print("There are %d "+enemy_type+"s walking towards you!\n They are all "+sound+"ing LOUDLY ", self.number_of_enemies)
+	 		print("There are %d "+self.enemy_type+"s walking towards you!\n They are all "+self.sound+"ing LOUDLY ", self.number_of_enemies)
 
 
 
 
 class Troll(Enemy):
-	print(sound)
+	def __init__(self, enemy_type, sound, number_of_enemies):
+		super(Enemy, self).__init__()
 
 
 class FlyingBat(Enemy):
-	print(sound)
+	def __init__(self, enemy_type, sound, number_of_enemies):
+		super(Enemy, self).__init__()
