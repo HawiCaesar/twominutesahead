@@ -79,7 +79,7 @@ class Troll(Enemy):
 
     def attack(self):
         if  self.trolls_around_player == 1:
-            print "The %s attacks you and you are in pain!!! -%d " %(self.troll_type, self.troll_damage)
+            print "The %s attacks you and you are in pain!!! -%d of your life" %(self.troll_type, self.troll_damage)
 
         elif self.trolls_around_player > 1:
             print "The %ss attack you and you are in pain REAL PAIN!!! -%d of your life" %(self.troll_type, self.troll_damage)
@@ -104,7 +104,7 @@ class FlyingBat(Enemy):
 
     def attack(self):
         if  self.bats_around_player == 1:
-            print "The %s attacks you, sucking your blood and you are in pain!!! -%d " %(self.bats_type, self.bats_damage)
+            print "The %s attacks you, sucking your blood and you are in pain!!! -%d of your life" %(self.bats_type, self.bats_damage)
 
         elif self.bats_around_player > 1:
             print "The %ss attack by sucking your blood! -%d of your life" %(self.bats_type, self.bats_damage)
@@ -113,10 +113,10 @@ class FlyingBat(Enemy):
 
 
 
-troll = Troll('Fat-Belly-Troll', 'ROAAAAR', 1, 40)
+#troll = Troll('Fat-Belly-Troll', 'ROAAAAR', 1, 40)
 #print(troll.scare())
 
-"""
+
 def main():
 
     print "You are an exception individual. You can see at least 2 minutes into the future"
@@ -124,10 +124,109 @@ def main():
     print "You see a Troll a head of you and you also see bats flying from behind you"
     choice = raw_input("What do you do? Answer 1 for facing the Troll and 2 flying bats ")
 
+    if choice == "1":
+        print "You can magically summon weapons!"
+
+        weapon_choice_one = raw_input("Answer 1 for Sword  and 2 for Big Guns ? \n")
+
+        if weapon_choice_one == "1":
+            player1 = Player()
+            player1.set_weapon('Sword')
+
+            print "I will use the " +player1.get_weapon()+ ". \n"+player1.ready()
+
+            troll = Troll('Fat-Belly-Troll', 'ROAAAAR', 1, 41)
+            print troll.scare()
+
+            choice2 = raw_input("What do you do?  1 for Attack or 2 to let it come first \n")
+
+            if choice2 =="1":
+                print "You are GREAT! You slay the BEAST"
+
+            elif choice2 == "2":
+                print troll.attack()
+                print(player1.player_life - troll.get_damage())
+
+                print "It finds a way to hurt you but in the end YOU WIN!!!!"
+            else:
+                print "You let it Kill you!!!"
+
+        elif weapon_choice_one == "2":
+            troll = Troll('Fat-Belly-Troll', 'ROAAAAR', 1, 41)
+            print troll.scare()
+
+            choice_gun = raw_input("What do you do?  1 for Attack or 2 to let it come first\n")
+
+            if choice_gun == "1":
+                print "You are GREAT! You shoot the BEAST vigorously"
+            elif choice_gun == "2":
+                print troll.attack()
+                print(player1.player_life - troll.get_damage())
+
+                print "It hits you  badly but in the end YOU WIN!!!!"
+            else:
+                print "You let it Kill you!!!"
+
+        else:
+            print "You shoud have chosen a weapon! Now they will suck your bones dry"
+
+    elif choice == "2":
+
+        print "You can magically summon weapons!"
+        
+        weapon_choice_two = raw_input("Answer 1 for Flamethrower and 2 for Ray Gun\n")
+
+        if weapon_choice_two == "1":
+            player1 = Player()
+            player1.set_weapon('Flamethrower')
+
+            print "I will use the " +player1.get_weapon()+ ". \n"+player1.ready()
+
+            bat = FlyingBat('Horn-Tailed-Bat', 'Screech-Screech-SCREECH', 40, 5)
+            print bat.scare()
+
+            choice_bats = raw_input("What do you do?  1 for Attack or 2 to let it come first\n")
+
+            if choice_bats == "1":
+                print "You Burn all the bats!! GREAT"
+            elif choice_bats == "2":
+
+                print bat.attack()
+                print(player1.player_life - bat.get_damage())
+
+                print "They overwelm you but in the end YOU WIN!!!!"
+            else:
+                print "They Killed you!!!"
+
+        elif weapon_choice_two == "2":
+            player1 = Player()
+            player1.set_weapon('Ray Gun')
+            
+            print "I will use the " +player1.get_weapon()+ ". \n"+player1.ready()
+
+            bat = FlyingBat('Horn-Tailed-Bat', 'Screech-Screech-SCREECH', 40, 5)
+            bat.scare()
+
+            choice_bats = raw_input("What do you do?  1 for Attack or 2 to let it come first\n")
+
+            if choice_bats == "1":
+                print "You Kill all the bats GREAT"
+            elif choice_bats == "2":
+
+                print bat.attack()
+                print(player1.player_life - bat.get_damage())
+
+                print "They overwelm you but in the end YOU WIN thanks to the Ray Gun!!!!"
+            else:
+                print "They Killed you!!!"
+
+    else:
+        print "You shoud have made a Choice! Now they will suck your bones dry"
+
 
 if __name__ == '__main__':
     main()
-"""
+
 
 
 
