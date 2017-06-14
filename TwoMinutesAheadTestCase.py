@@ -23,7 +23,22 @@ class TwoMinutesAheadTestCase(unittest.TestCase):
    def test_player_weapon_is_set_and_ready(self):
       player1 = Player()
       player1.set_weapon('sword')
-      self.assertEqual(player1.get_weapon, 'sword', "Player has no weapon")
+      self.assertEqual(player1.get_weapon(), 'sword', "Player has no weapon")
+
+   # Check if Enemy:Troll makes sound
+   def test_enemy_makes_sound(self):
+      troll = Troll('Fat-Belly-Troll', 'ROAAAAR', 1, 40)
+      self.assertEqual(troll.get_sound(), 'ROAAAAR', "Enemey:Troll does not make sound")
+
+   # Check if Enemy:FlyingBat makes sound
+   def test_enemy_makes_sound2(self):
+      bat = FlyingBat('Blind-Bat', 'Screech-Screech-SCREECH', 45, 2)
+      self.assertEqual(bat.get_sound(), 'Screech-Screech-SCREECH', "Enemey:FlyingBat does not make sound")
+
+   # Check if Enemy:FlyingBar makes attack move
+   def test_enemy_attacks(self):
+      enemy = Enemy()
+      self.assertEqual(enemy.attack(), 'YOU BETTER THINK QUICKLY AND DEFEND YOURSELF!!!', "Attack function does not work")
 
 
    

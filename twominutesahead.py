@@ -57,37 +57,77 @@ class Enemy(object):
 
     #Base class methods
     def attack(self):
-        return "YOU BETTER THINK QUICKLY AND GET OUT OF THERE!!!"
+        return "YOU BETTER THINK QUICKLY AND DEFEND YOURSELF!!!"
 
     def scare(self):
-        return "YOU BETTER THINK QUICKLY AND GET OUT OF THERE!!!"
+        return "YOU BETTER THINK QUICKLY"
 
 
-
+# Inherit from Enemy
 class Troll(Enemy):
     def __init__(self, enemy_type, sound, number_of_enemies, damage):
         super(Troll, self).__init__()
         super(Troll, self).set_enemy(enemy_type, sound, number_of_enemies, damage)
 
+        self.trolls_around_player = super(Troll, self).get_number_of_enemies()
+        self.troll_type = super(Troll, self).get_enemy_type()
+        self.troll_sound = super(Troll, self).get_sound()
+        self.troll_damage = super(Troll, self).get_damage()
+
     def scare(self):
-        return super(Troll,self,).get_sound()
+        return self.troll_sound +"!!!!\n "+ super(Troll, self).scare()
+
+    def attack(self):
+        if  self.trolls_around_player == 1:
+            print "The %s attacks you and you are in pain!!! -%d " %(self.troll_type, self.troll_damage)
+
+        elif self.trolls_around_player > 1:
+            print "The %ss attack you and you are in pain REAL PAIN!!! -%d of your life" %(self.troll_type, self.troll_damage)
+
+        return super(Troll, self).attack()
 
 
 
-
+# Inherit from Enemy
 class FlyingBat(Enemy):
     def __init__(self, enemy_type, sound, number_of_enemies, damage):
         super(FlyingBat, self).__init__()
-
         super(FlyingBat, self).set_enemy(enemy_type, sound, number_of_enemies, damage)
+
+        self.bats_around_player = super(FlyingBat, self).get_number_of_enemies()
+        self.bats_type = super(FlyingBat, self).get_enemy_type()
+        self.bats_sound = super(FlyingBat, self).get_sound()
+        self.bats_damage = super(FlyingBat, self).get_damage()
+
+    def scare(self):
+        return self.bats_sound +"!!!!\n "+ super(FlyingBat, self).attack()
+
+    def attack(self):
+        if  self.bats_around_player == 1:
+            print "The %s attacks you, sucking your blood and you are in pain!!! -%d " %(self.bats_type, self.bats_damage)
+
+        elif self.bats_around_player > 1:
+            print "The %ss attack by sucking your blood! -%d of your life" %(self.bats_type, self.bats_damage)
+
+        return super(FlyingBat, self).attack()
 
 
 
 troll = Troll('Fat-Belly-Troll', 'ROAAAAR', 1, 40)
+#print(troll.scare())
+
+"""
+def main():
+
+    print "You are an exception individual. You can see at least 2 minutes into the future"
+    print "You are walking in a forest and if have this 'see into the future moment' "
+    print "You see a Troll a head of you and you also see bats flying from behind you"
+    choice = raw_input("What do you do? Answer 1 for facing the Troll and 2 flying bats ")
 
 
-print(troll.scare())
-
+if __name__ == '__main__':
+    main()
+"""
 
 
 
